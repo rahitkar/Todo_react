@@ -1,8 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
-import './todo.css';
 
-const TodoItems = function(props) {
+const TodoItems = function (props) {
   const todoList = props.todoList.map((todo, index) => {
     return (
       <TodoItem

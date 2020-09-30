@@ -1,5 +1,25 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import DeleteIcon from './DeleteIcon';
+
+const Wrapper = styled.section`
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+`;
+
+const statusColours = { todo: 'lightblue', doing: 'orange', done: 'green' };
+
+const StyledIndicator = styled.div`
+  width: 14px;
+  height: 18px;
+  margin-right: 6px;
+  background-color: ${({ status }) => statusColours[status]};
+`;
+
+const StyledText = styled.span`
+  cursor: pointer;
+`;
 
 const TodoItem = (props) => {
   const [isDeleteIconVisible, changeVisibility] = useState(false);
@@ -26,19 +46,14 @@ const TodoItem = (props) => {
     deleteElement = <DeleteIcon delete={() => _delete(id)} />;
   }
 
-  const classes = `task ${status}`;
   return (
-    <div
-      className={classes}
-      onMouseOver={showDeleteIcon}
-      onMouseLeave={hideDeleteIcon}
-    >
-      <div className='indicator'></div>
-      <span className='todoText' id={id} onClick={handleClick}>
+    <Wrapper onMouseOver={showDeleteIcon} onMouseLeave={hideDeleteIcon}>
+      <StyledIndicator status={status}></StyledIndicator>
+      <StyledText className='todoText' id={id} onClick={handleClick}>
         {text}
-      </span>
+      </StyledText>
       {deleteElement}
-    </div>
+    </Wrapper>
   );
 };
 

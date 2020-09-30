@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import Input from './Input';
 import DeleteIcon from './DeleteIcon';
+
+const Wrapper = styled.section`
+  display: flex;
+`;
 
 const Heading = (props) => {
   const [isEditable, changeEditableState] = useState(false);
@@ -29,24 +34,14 @@ const Heading = (props) => {
     ''
   );
   let content = (
-    <div
-      onMouseOver={showDeleteIcon}
-      onMouseLeave={hideDeleteIcon}
-      className='task'
-    >
+    <Wrapper onMouseOver={showDeleteIcon} onMouseLeave={hideDeleteIcon}>
       <h1 onClick={editHeader}>{props.heading}</h1>
       {deleteIcon}
-    </div>
+    </Wrapper>
   );
 
   if (isEditable) {
-    content = (
-      <Input
-        className='edit-heading'
-        value={props.heading}
-        onKeyPress={updateHeading}
-      />
-    );
+    content = <Input value={props.heading} onKeyPress={updateHeading} />;
   }
   return content;
 };

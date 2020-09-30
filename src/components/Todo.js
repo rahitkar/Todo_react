@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import Input from './Input';
 import TodoItems from './TodoItems';
 import Heading from './Heading';
 import TodoApi from './TodoApi';
-import './todo.css';
+
+const Wrapper = styled.section`
+  margin-left: 2%;
+`;
 
 const Todo = () => {
   const [todo, updateTodo] = useState([]);
@@ -40,7 +44,7 @@ const Todo = () => {
   };
 
   return (
-    <div className='todo-box'>
+    <Wrapper>
       <Heading
         heading={heading}
         deleteTodo={deleteTodo}
@@ -52,7 +56,7 @@ const Todo = () => {
         deleteItem={deleteItem}
       />
       <Input onKeyPress={addTodo} />
-    </div>
+    </Wrapper>
   );
 };
 
