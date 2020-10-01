@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Input = (props) => {
+const Input = (props, Component) => {
   const [input, updateInput] = useState(props.value);
 
   const handleKeyPress = (event) => {

@@ -7,6 +7,12 @@ const Wrapper = styled.section`
   display: flex;
 `;
 
+const StyledInput = styled(Input)`
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+`;
+
 const Heading = (props) => {
   const [isEditable, changeEditableState] = useState(false);
   const [isDeleteIconVisible, changeVisibility] = useState(false);
@@ -41,7 +47,7 @@ const Heading = (props) => {
   );
 
   if (isEditable) {
-    content = <Input value={props.heading} onKeyPress={updateHeading} />;
+    content = <StyledInput value={props.heading} onKeyPress={updateHeading} />;
   }
   return content;
 };
